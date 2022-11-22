@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  default-downloader:
+    build: .
+    container_name: default-downloader
+    depends_on:
+      - db
+
+  db:
+    image: 'mongo:6.0'
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - mongodb:/data/db
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:27017" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  mongodb:
