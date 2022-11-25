@@ -19,6 +19,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    command:
+      mongod --quiet --logpath /dev/null                                # silence all mongodb image log output
 
 volumes:
   mongodb:
