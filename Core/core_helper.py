@@ -18,13 +18,14 @@ def get_youtubedl_type(url):
     return extractor_name
 
 
-def get_logger():
+def get_logger(name):
     log_format = "%(asctime)s [%(process)s] [%(threadName)-12.12s] [%(levelname)-5.5s] " \
                  "[%(pathname)s] [%(funcName)s:%(lineno)d] \n %(message)s \n"
     log_formatter = logging.Formatter(log_format)
 
-    root_logger = logging.getLogger()
+    root_logger = logging.getLogger(name)
     root_logger.setLevel(logging.DEBUG)
+    root_logger.propagate = False
 
     log_path = get_log_path()
     file_name = timestamp_filename("ddlog")

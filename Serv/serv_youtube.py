@@ -2,12 +2,18 @@ import youtube_dl
 
 from Database import DefaultDB
 
+from Core.core_helper import get_logger
+
+logger = get_logger(__name__)
+
 
 def run():
+    logger.info("Running serv youtube pipeline...")
     DefaultDB.initialize()
     load()
     input_dict = read()
     update(input_dict)
+    logger.info("Finished serv youtube pipeline.")
 
 
 def load():

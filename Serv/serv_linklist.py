@@ -1,15 +1,20 @@
-import json
 from urlextract import URLExtract
 
 from Database import DefaultDB
 from Core.core_helper import get_youtubedl_type
 from Core.core_config import get_linklist_path
 
+from Core.core_helper import get_logger
+
+logger = get_logger(__name__)
+
 
 def run():
+    logger.info("Running serv linklist pipeline...")
     DefaultDB.initialize()
     input_dict = clean(read())
     update(input_dict)
+    logger.info("Finished serv linklist pipeline.")
 
 
 def read():
@@ -27,6 +32,7 @@ def read():
 
     input_dict.update({"found_urls": found_urls})
 
+    logger.info("Found " + str(len(found_urls)) + " urls in linklist.")
     return input_dict
 
 
@@ -47,8 +53,12 @@ def clean(input_dict):
 
 
 def update(input_dict):
+    urls_inserted = 0
     for url_pair in input_dict["url_data"]:
-        DefaultDB.linklist_insert(url_pair)
+        if DefaultDB.linklist_insert(url_pair):
+            urls_inserted = urls_inserted + 1
+
+    logger.info("Inserted " + str(urls_inserted) + " urls into linklist collection.")
 
 
 def _find_url_type(url):
