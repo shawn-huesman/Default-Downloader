@@ -6,6 +6,14 @@ services:
     container_name: default-downloader
     depends_on:
       - db
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /dd-data/logs
+
+      - type: volume
+        source: dd-data
+        target: /dd-data
 
   db:
     image: 'mongo:6.0'
@@ -24,3 +32,4 @@ services:
 
 volumes:
   mongodb:
+  dd-data:

@@ -1,7 +1,7 @@
 {
   "file-locations": {
     "linklist": "./User/linklist.txt",
-    "logs": "./logs"
+    "logs": "/dd-data/logs"
   },
   "download-order": [
     "youtube"
