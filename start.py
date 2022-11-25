@@ -1,5 +1,4 @@
-import serv_linklist, serv_youtube
-from Database import DefaultDB
+from Serv import serv_linklist, serv_youtube
 
 
 def main():

@@ -8,7 +8,6 @@ def run():
     load()
     input_dict = read()
     update(input_dict)
-    quick_print_docs()
 
 
 def load():
@@ -18,23 +17,6 @@ def load():
         for data_entry in data:
             DefaultDB.youtube_insert(data_entry)
             DefaultDB.linklist_remove(data_entry)
-
-
-def quick_print_docs():
-    print("")
-    print("--youtube--")
-    for doc in DefaultDB.get_docs_by_date_added("youtube"):
-        print(doc)
-
-    print("")
-    print("--linklist--")
-    for doc in DefaultDB.get_docs_by_date_added("linklist"):
-        print(doc)
-
-    print("")
-    print("--archive--")
-    for doc in DefaultDB.get_docs_by_date_added("archive"):
-        print(doc)
 
 
 def populate(doc):
