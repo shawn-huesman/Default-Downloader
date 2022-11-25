@@ -3,6 +3,7 @@ from urlextract import URLExtract
 
 from Database import DefaultDB
 from Core.core_helper import get_youtubedl_type
+from Core.core_config import get_linklist_path
 
 
 def run():
@@ -14,7 +15,7 @@ def run():
 def read():
     input_dict = {}
 
-    linklist_path = _get_linklist_path()
+    linklist_path = get_linklist_path()
 
     found_urls = []
     with open(linklist_path, 'r') as file:
@@ -62,8 +63,3 @@ def _find_url_type(url):
         return get_youtubedl_type(url)
 
 
-def _get_linklist_path():
-    with open("../User/config.json", 'r') as file:
-        config = json.load(file)
-        linklist_path = config['file-locations']['linklist']
-    return linklist_path
