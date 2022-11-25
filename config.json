@@ -1,0 +1,8 @@
+{
+  "file-locations": {
+    "linklist": "./linklist.txt"
+  },
+  "download-order": [
+    "youtube"
+  ]
+}
