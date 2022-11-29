@@ -1,6 +1,4 @@
 from pymongo import MongoClient
-import pymongo
-import logging
 
 
 class DefaultDB(object):
@@ -49,3 +47,14 @@ class DefaultDB(object):
             collection.insert_one(data)
             return True
         return False
+
+    @staticmethod
+    def youtube_get_videos():
+        collection = DefaultDB.get_collection('youtube')
+
+        youtube_videos = []
+        for doc in collection.find({}):
+            if doc["url_type"] == "youtube-video" and not doc['downloaded']:
+                youtube_videos.append(doc)
+
+        return youtube_videos

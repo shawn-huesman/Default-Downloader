@@ -1,4 +1,4 @@
-import youtube_dl.extractor
+import yt_dlp.extractor
 import logging
 import datetime
 import os
@@ -7,8 +7,8 @@ from sys import stdout
 from Core.core_config import get_log_path
 
 
-def get_youtubedl_type(url):
-    extractors = youtube_dl.extractor.gen_extractors()
+def get_ytdlp_type(url):
+    extractors = yt_dlp.extractor.gen_extractors()
 
     extractor_name = None
     for extractor in extractors:
@@ -44,6 +44,15 @@ def get_logger(name):
     return root_logger
 
 
+def make_dirs_if_not_exist(list_of_dirs):
+    if not isinstance(list_of_dirs, list):
+        list_of_dirs = [list_of_dirs]
+
+    for directory in list_of_dirs:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+
 def timestamp_filename(filename):
     format = "%Y-%m-%d %H.%M.%S {fname}".format(fname=filename)
     return datetime.datetime.now().strftime(format)
@@ -53,7 +62,5 @@ def timestamp_ymd():
     return datetime.datetime.now().strftime("%Y-%m-%d")
 
 
-def make_dirs_if_not_exist(list_of_dirs):
-    for directory in list_of_dirs:
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+def get_current_date():
+    return datetime.datetime.today().replace(microsecond=0)

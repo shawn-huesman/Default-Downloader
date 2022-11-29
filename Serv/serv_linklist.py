@@ -1,7 +1,7 @@
 from urlextract import URLExtract
 
 from Database import DefaultDB
-from Core.core_helper import get_youtubedl_type
+from Core.core_helper import get_ytdlp_type
 from Core.core_config import get_linklist_path
 
 from Core.core_helper import get_logger
@@ -70,6 +70,4 @@ def _find_url_type(url):
     elif "youtube.com/" in url:
         return "youtube-channel"
     else:
-        return get_youtubedl_type(url)
-
-
+        return get_ytdlp_type(url)

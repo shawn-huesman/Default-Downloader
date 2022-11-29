@@ -1,7 +1,11 @@
 {
   "file-locations": {
     "linklist": "./User/linklist.txt",
-    "logs": "/dd-data/logs"
+    "logs": "/dd-data/logs",
+    "data": "/dd-data/data"
+  },
+  "download-settings": {
+    "minimum_diskspace_allowed_left_in_gb": 10
   },
   "download-order": [
     "youtube"

@@ -11,6 +11,10 @@ services:
         source: ./logs
         target: /dd-data/logs
 
+      - type: bind
+        source: ./data
+        target: /dd-data/data
+
       - type: volume
         source: dd-data
         target: /dd-data
