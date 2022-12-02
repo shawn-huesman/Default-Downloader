@@ -27,8 +27,12 @@ def load():
         data = populate(doc)
 
         for data_entry in data:
-            DefaultDB.youtube_insert(data_entry)
-            DefaultDB.linklist_remove(data_entry)
+            inserted = False
+            if DefaultDB.youtube_insert(data_entry):
+                inserted = True
+
+            if inserted:
+                DefaultDB.linklist_remove(data_entry)
 
 
 def read():
