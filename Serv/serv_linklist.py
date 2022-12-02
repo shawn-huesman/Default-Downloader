@@ -11,9 +11,10 @@ logger = get_logger(__name__)
 
 def run():
     logger.info("Running serv linklist pipeline...")
-    DefaultDB.initialize()
+
     input_dict = clean(read())
     update(input_dict)
+
     logger.info("Finished serv linklist pipeline.")
 
 

@@ -13,7 +13,6 @@ logger = get_logger(__name__)
 def run():
     logger.info("Running YouTube pipeline...")
 
-    DefaultDB.initialize()
     load()
     input_dict = read()
     update(input_dict)
@@ -24,7 +23,7 @@ def run():
 
 
 def load():
-    for doc in DefaultDB.get_docs_by_date_added("linklist"):
+    for doc in DefaultDB.get_linklist_docs():
         data = populate(doc)
 
         for data_entry in data:
