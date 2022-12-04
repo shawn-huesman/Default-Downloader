@@ -4,7 +4,7 @@ import datetime
 import os
 from sys import stdout
 
-from Core.core_config import get_log_path
+from defaultdownloader.core.config import get_log_path
 
 
 def get_ytdlp_type(url):

@@ -1,10 +1,8 @@
-import logging
 import shutil
 import subprocess
-import yt_dlp
 
-from Core.core_config import get_min_space_allowed
-from Core.core_helper import get_logger
+from defaultdownloader.core.config import get_min_space_allowed
+from defaultdownloader.core.helper import get_logger
 
 logger = get_logger(__name__)
 

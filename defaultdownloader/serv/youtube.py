@@ -1,11 +1,11 @@
 import yt_dlp
 import os
 
-from Database import DefaultDB
+from defaultdownloader.Database import DefaultDB
 
-from Core.core_helper import get_logger, get_current_date, make_dirs_if_not_exist
-from Core.core_config import get_data_path
-from Core.core_download import download_video_using_ytdlp
+from defaultdownloader.core.helper import get_logger, get_current_date, make_dirs_if_not_exist
+from defaultdownloader.core.config import get_data_path
+from defaultdownloader.core.download import download_video_using_ytdlp
 
 logger = get_logger(__name__)
 

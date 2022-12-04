@@ -1,4 +1,7 @@
 import json
+import os
+
+CONFIG_FILE_LOCATION = os.path.join(os.getcwd(), "defaultdownloader", "config", "config.json")
 
 
 def get_data_path():
@@ -18,14 +21,14 @@ def get_min_space_allowed():
 
 
 def _get_file_location(filename):
-    with open("./User/config.json", 'r') as file:
+    with open(CONFIG_FILE_LOCATION, 'r') as file:
         config = json.load(file)
         file_path = config['file-locations'][filename]
     return file_path
 
 
 def _get_download_setting(setting_name):
-    with open("./User/config.json", 'r') as file:
+    with open(CONFIG_FILE_LOCATION, 'r') as file:
         config = json.load(file)
         file_path = config['download-settings'][setting_name]
     return file_path

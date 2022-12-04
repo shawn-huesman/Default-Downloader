@@ -1,10 +1,10 @@
 from urlextract import URLExtract
 
-from Database import DefaultDB
-from Core.core_helper import get_ytdlp_type
-from Core.core_config import get_linklist_path
+from defaultdownloader.Database import DefaultDB
+from defaultdownloader.core.helper import get_ytdlp_type
+from defaultdownloader.core.config import get_linklist_path
 
-from Core.core_helper import get_logger
+from defaultdownloader.core.helper import get_logger
 
 logger = get_logger(__name__)
 
