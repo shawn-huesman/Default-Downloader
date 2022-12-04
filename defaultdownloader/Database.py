@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 
 class DefaultDB(object):
-    URI = "mongodb://host.docker.internal:27017/"
+    URI = "mongodb://db:27017/"
     DATABASE = None
     DEFAULTDOWNLOADERDB = "defaultdownloaderdb"
     YOUTUBEVIDEODB = "youtubevideodb"
