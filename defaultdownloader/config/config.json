@@ -1,6 +1,6 @@
 {
   "file-locations": {
-    "linklist": "defaultdownloader/config/linklist.txt",
+    "linklist": "/dd-data/defaultdownloader/config/linklist.txt",
     "logs": "/dd-data/logs",
     "data": "/dd-data/data"
   },
