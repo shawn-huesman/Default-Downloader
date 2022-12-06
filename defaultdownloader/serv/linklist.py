@@ -71,10 +71,10 @@ def clear_linklist():
 
 def _find_url_type(url):
     url = str.lower(url)
-    if "youtube.com/watch?v=" in url:
-        return "youtube-video"
-    elif "youtube.com/playlist?list=" in url:
+    if "youtube.com/playlist?list=" in url or ("youtube.com" in url and "&list=" in url):
         return "youtube-playlist"
+    elif "youtube.com/watch?v=" in url:
+        return "youtube-video"
     elif "youtube.com/" in url:
         return "youtube-channel"
     else:
