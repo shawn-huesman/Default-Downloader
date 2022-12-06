@@ -58,7 +58,19 @@ def download(input_dict):
     for doc in input_dict['youtube_videos']:
         url = doc["url"]
         download_video_using_ytdlp(url, youtube_video_path)
-        doc["downloaded"] = True
+        DefaultDB.youtube_update_video_as_downloaded(doc)
+
+    for doc in input_dict["youtube_playlist_videos"]:
+        playlist_id = doc["playlist_id"]
+        playlist_name = doc["playlist_name"]
+        playlist_path = "{} [{}]".format(playlist_name, playlist_id)
+        url = doc["url"]
+
+        playlist_video_path = os.path.join(youtube_playlist_path, playlist_path)
+        make_dirs_if_not_exist([playlist_video_path])
+
+        download_video_using_ytdlp(url, playlist_video_path)
+        DefaultDB.youtube_update_playlist_video_as_downloaded(doc, playlist_id)
 
 
 def organize():
