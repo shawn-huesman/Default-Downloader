@@ -13,7 +13,6 @@ def download_video_using_ytdlp(link, download_folder, name=None):
             subprocess.run(["yt-dlp", link, "-o", name], cwd=download_folder)
         else:
             subprocess.run(["yt-dlp", link], cwd=download_folder)
-            subprocess.run(["dpkg", "-L", "yt-dlp"], cwd=download_folder)
     else:
         logger.ERROR(
             "Less than " + str(get_min_space_allowed()) + " GB space available, will not download: " + str(link))
