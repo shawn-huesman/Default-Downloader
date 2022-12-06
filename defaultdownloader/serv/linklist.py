@@ -61,6 +61,13 @@ def update(input_dict):
 
     logger.info("Inserted " + str(urls_inserted) + " urls into linklist collection.")
 
+    clear_linklist()
+
+
+def clear_linklist():
+    f = open(get_linklist_path(), 'r+')
+    f.truncate(0)
+
 
 def _find_url_type(url):
     url = str.lower(url)
