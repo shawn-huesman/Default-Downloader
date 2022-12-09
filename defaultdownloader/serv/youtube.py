@@ -29,16 +29,17 @@ def load():
         data = populate(doc)
 
         for data_entry in data:
-            url_type = data_entry["url_type"]
-            if url_type in supported_load_types:
-                if url_type == "youtube-video":
-                    DefaultDB.youtube_videos_insert(data_entry)
+            if "url_type" in data_entry:
+                url_type = data_entry["url_type"]
+                if url_type in supported_load_types:
+                    if url_type == "youtube-video":
+                        DefaultDB.youtube_videos_insert(data_entry)
 
-                elif url_type == "youtube-playlist-video":
-                    playlist_id = data_entry["playlist_id"]
-                    DefaultDB.youtube_playlist_insert(data_entry, playlist_id)
+                    elif url_type == "youtube-playlist-video":
+                        playlist_id = data_entry["playlist_id"]
+                        DefaultDB.youtube_playlist_insert(data_entry, playlist_id)
 
-                DefaultDB.linklist_remove(data_entry)
+                    DefaultDB.linklist_remove(data_entry)
 
 
 def populate(doc) -> list:
@@ -55,10 +56,11 @@ def populate(doc) -> list:
             elif url_type == "youtube-playlist":
                 data = _get_playlist_data(url)
 
-    if isinstance(data, list):
-        return data
-    else:
-        return [data]
+            if isinstance(data, list):
+                return data
+            else:
+                return [data]
+    return []
 
 
 def read():
