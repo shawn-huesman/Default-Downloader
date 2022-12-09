@@ -14,6 +14,7 @@ def run():
 
     input_dict = clean(read())
     update(input_dict)
+    clear_linklist()
 
     logger.info("Finished serv linklist pipeline.")
 
@@ -61,11 +62,9 @@ def update(input_dict):
 
     logger.info("Inserted " + str(urls_inserted) + " urls into linklist collection.")
 
-    clear_linklist()
-
 
 def clear_linklist():
-    f = open(get_linklist_path(), 'r+')
+    f = open(get_linklist_path(), 'w+')
     f.truncate(0)
 
 
