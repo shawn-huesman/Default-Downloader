@@ -25,12 +25,12 @@ class DefaultDB(object):
         return docs
 
     @staticmethod
-    def get_docs_to_download(db, collection, url_type, only_docs_not_downloaded=True):
+    def get_docs_to_download(db, collection, url_type=None, only_docs_not_downloaded=True):
         collection = DefaultDB.get_collection(db, collection)
 
         docs = []
         for doc in collection.find({}):
-            if doc["url_type"] == url_type:
+            if (url_type and doc["url_type"] == url_type) or url_type is None:
                 if (only_docs_not_downloaded and not doc["downloaded"]) or not only_docs_not_downloaded:
                     docs.append(doc)
         return docs
@@ -105,3 +105,15 @@ class DefaultDB(object):
     @staticmethod
     def youtube_update_playlist_video_as_downloaded(doc, playlist_id):
         return DefaultDB.update_as_downloaded(DefaultDB.YOUTUBEPLAYLISTDB, playlist_id, doc)
+
+    @staticmethod
+    def misc_insert(data):
+        return DefaultDB.insert(DefaultDB.DEFAULTDOWNLOADERDB, "misc", data)
+
+    @staticmethod
+    def misc_get_downloads():
+        return DefaultDB.get_docs_to_download(DefaultDB.DEFAULTDOWNLOADERDB, "misc")
+
+    @staticmethod
+    def misc_update_doc_as_downloaded(doc):
+        return DefaultDB.update_as_downloaded(DefaultDB.DEFAULTDOWNLOADERDB, "misc", doc)
